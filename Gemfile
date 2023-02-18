@@ -79,3 +79,6 @@ gem "annotate", "~> 3.2", :group => :development
 gem "simple_form", "~> 5.2"
 
 gem "devise", "~> 4.9"
+
+gem "shoulda-matchers", "~> 4.5", :group => :test
+gem "shoulda", "~> 4.0", :group => :test
