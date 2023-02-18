@@ -19,4 +19,12 @@ class Cart < ApplicationRecord
     end
     false
   end
+
+  def empty?
+    cart_lines.empty?
+  end
+
+  def total_items
+    cart_lines.sum(&:quantity)
+  end
 end

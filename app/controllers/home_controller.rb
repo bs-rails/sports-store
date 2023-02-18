@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   include Pagy::Backend
+  include CurrentCart
+  before_action :set_cart
 
   def index
     @categories = Category.all.load_async
