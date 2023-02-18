@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/shared/head' %>
+  <body>
+    <%= render 'layouts/shared/navbar' %>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-5 col-lg-4">
+          <%= render 'layouts/shared/flash_messages' %>
+          <div class="card">
+            <div class="card-body">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -77,3 +77,5 @@ end
 gem "annotate", "~> 3.2", :group => :development
 
 gem "simple_form", "~> 5.2"
+
+gem "devise", "~> 4.9"
