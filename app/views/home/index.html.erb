@@ -1,1 +1,40 @@
-<h1>Sports Store</h1>
+<div class="row text-white">
+  <div class="col-sm-3 p-2">
+    <div class="d-grid gap-2" style="position: sticky; top: 72px;">
+      <%= link_to 'Home', root_path, 
+        class: "btn #{@category.nil? ? 'btn-primary' : 'btn-outline-primary'}" %>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, root_path(category: category.name),
+         class: "btn #{@category&.name == category.name ? 'btn-primary' : 'btn-outline-primary' }" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-9 p-2 text-dark">
+    <% @products.each do |product| %>
+      <div class="card mb-2 p-2 bg-light">
+        <h4>
+          <%= product.name %>
+          <span class="badge rounded-pill bg-primary float-end">
+            <%= number_to_currency product.price %>
+          </span>
+        </h4>
+        <div class="card-text bg-white p-1"><%= product.description %></div>
+      </div>
+    <% end %>
+    <div class="d-flex justify-content-between">
+      <%= render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= @pagy.items %> Items Per Page
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= items_per_page(3) %></li>
+          <li><%= items_per_page(5) %></li>
+          <li><%= items_per_page(10) %></li>
+          <li><%= items_per_page(15) %></li>
+          <li><%= items_per_page(20) %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

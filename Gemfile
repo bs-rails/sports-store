@@ -82,3 +82,5 @@ gem "devise", "~> 4.9"
 
 gem "shoulda-matchers", "~> 4.5", :group => :test
 gem "shoulda", "~> 4.0", :group => :test
+
+gem "pagy", "~> 6.0"
