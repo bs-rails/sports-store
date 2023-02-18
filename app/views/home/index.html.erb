@@ -18,7 +18,11 @@
             <%= number_to_currency product.price %>
           </span>
         </h4>
-        <div class="card-text bg-white p-1"><%= product.description %></div>
+        <div class='d-flex justify-content-between'>
+          <div class="card-text bg-white p-1"><%= product.description %></div>
+          <%= button_to 'Add to Cart', cart_lines_path(product_id: product.id), 
+                  class: 'btn btn-sm btn-outline-success' %>
+        </div>
       </div>
     <% end %>
     <div class="d-flex justify-content-between">

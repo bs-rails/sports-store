@@ -20,6 +20,19 @@
 #
 class Product < ApplicationRecord
   belongs_to :category
+  has_many :cart_lines
+
+  before_destroy :ensure_not_referenced_by_any_cart_line
+
   validates :name, length: { minimum: 5 }, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0.00 }
+
+  private
+
+  def ensure_not_referenced_by_any_cart_line
+    unless cart_lines.empty?
+      errors.add(:base, "Cart lines present")
+      throw :abort
+    end
+  end
 end

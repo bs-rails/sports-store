@@ -20,6 +20,12 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class CartLine < ApplicationRecord
-  belongs_to :cart
   belongs_to :product
+  belongs_to :cart
+
+  after_save { self.destroy if quantity < 1 }
+
+  def price
+    quantity * product.price
+  end
 end

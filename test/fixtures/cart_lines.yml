@@ -21,11 +21,11 @@
 #
 
 one:
-  cart: one
   product: one
+  cart: one
   quantity: 1
 
 two:
-  cart: two
   product: two
+  cart: two
   quantity: 1
