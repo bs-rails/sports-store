@@ -9,7 +9,9 @@
         <li class="nav-item">
           <%= link_to cart_path, class: 'nav-link' do %>
             <i class="bi bi-cart"></i>
-            <span class="badge text-bg-secondary"><%= @cart.total_items %></span>
+            <% if @cart %>
+              <span class="badge text-bg-secondary"><%= @cart.total_items %></span>
+            <% end %>
           <% end %>
         </li>
         <li class="nav-item">

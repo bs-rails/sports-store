@@ -1,0 +1,34 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th class='text-end'>Price</th>
+      <th class='text-end'>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart.cart_lines.order(:created_at).each do |line| %>
+      <tr>
+        <td><%= line.product.name %></td>
+        <td class=''>
+          <% if controller_name == 'carts' %>
+            <%= button_to '-', cart_line_path(line, quantity: line.quantity - 1), method: :patch, class: 'btn btn-outline-info rounded-0 float-start' %>
+          <% end %>
+          <span class="mx-2 mt-1 fs-5 text-center float-start" style='width: 1.6rem'><%= line.quantity %></span>
+          <% if controller_name == 'carts' %>
+            <%= button_to '+', cart_line_path(line, quantity: line.quantity + 1), method: :patch, class: 'btn btn-outline-info rounded-0 float-start' %>
+          <% end %>
+        </td>
+        <td class='text-end'><%= number_to_currency line.product.price %></td>
+        <td class='text-end'><%= number_to_currency line.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th><strong>TOTAL</strong></th>
+      <th colspan=3 class='text-end' ><%= content_tag :strong, number_to_currency(cart.total_price) %></th>
+    </tr>
+  </tfoot>
+</table>

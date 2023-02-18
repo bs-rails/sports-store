@@ -5,39 +5,14 @@
       <p class="fs-5 mt-3 fw-light"><%= link_to 'Browser products', root_path, class: 'text-decoration-none' %> to add them to the cart</p>
     <% else %>
       <h1 class='h3'>Your Cart</h1>
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th class='text-end'>Unit Price</th>
-            <th class='text-end'>Total Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @cart.cart_lines.order(:created_at).each do |line| %>
-            <tr>
-              <td><%= line.product.name %></td>
-              <td class=''>
-                <%= button_to '-', cart_line_path(line, quantity: line.quantity - 1), method: :patch, class: 'btn btn-outline-info rounded-0 float-start' %>
-                <span class="mx-2 mt-1 fs-5 text-center float-start" style='width: 1.6rem'><%= line.quantity %></span>
-                <%= button_to '+', cart_line_path(line, quantity: line.quantity + 1), method: :patch, class: 'btn btn-outline-info rounded-0 float-start' %>
-              </td>
-              <td class='text-end'><%= number_to_currency line.product.price %></td>
-              <td class='text-end'><%= number_to_currency line.price %></td>
-            </tr>
-          <% end %>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th><strong>TOTAL</strong></th>
-            <th colspan=3 class='text-end' ><%= content_tag :strong, number_to_currency(@cart.total_price) %></th>
-          </tr>
-        </tfoot>
-      </table>
+      <%= render @cart %>
       <div class="d-flex justify-content-between">
-        <%= button_to 'Clear Cart', cart_path, method: :delete, class: 'btn btn-outline-danger', data: { turbo_confirm: "Are you sure?" } %>
-        <%= link_to 'Continue Shopping', root_path, class: 'btn btn-outline-primary' %>
+        <div class="d-flex">
+          <%= button_to 'Clear Cart', cart_path, method: :delete, class: 'btn btn-outline-danger', data: { turbo_confirm: "Are you sure?" } %>
+          <span class="mx-2"></span>
+          <%= link_to 'Continue Shopping', root_path, class: 'btn btn-outline-primary' %>
+        </div>
+        <%= link_to 'Checkout', new_order_path, class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
