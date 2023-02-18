@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "annotate", "~> 3.2", :group => :development
+
+gem "simple_form", "~> 5.2"
