@@ -16,6 +16,7 @@ class HomeController < ApplicationController
 
   def per_page
     # maximum items per page = 30
+    # default items per page = 10
     if params[:per_page].to_i.zero?
       10
     else
