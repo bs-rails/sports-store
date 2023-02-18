@@ -2,7 +2,7 @@
   <div class="col-md-9 col-sm-12">
     <% if @cart.empty? %>
       <h1 class="h2">Your cart is empty!</h1>
-      <p class="fs-5 mt-3 fw-light"><%= link_to 'Browser products', root_path, class: 'text-decoration-none' %> to add them to the cart</p>
+      <p class="fs-5 mt-3 fw-light"><%= link_to 'Browse products', root_path, class: 'text-decoration-none' %> to add them to the cart</p>
     <% else %>
       <h1 class='h3'>Your Cart</h1>
       <%= render @cart %>
